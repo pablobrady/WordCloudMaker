@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="../bower_components/mocha/mocha.css" />
+  </head>
+  <body>
+
+    <div id="out1" class="output"></div>
+    <div id="out2" class="output"></div>
+    <br style="clear:left">
+
+
+    <div id="mocha"></div>
+    <script src="../bower_components/chai/chai.js"></script>
+    <script src="../bower_components/mocha/mocha.js"></script>
+
+    <script src="js/wordCloudMaker.js"></script>
+    <script>
+      var sourceArray = [
+        'After beating the eggs, Dana read the next step: Add milk and eggs, then add flour and sugar. Sugar sugar sugar!  Why so much sugar, Dana?',
+        'We came, we saw, we conquered... then we ate Bill\'s (Mille-Feuille) cake.  Bill!  Bill?  Bill will pay the bill!  Bill, what is Mille-Feuille?'
+      ];
+
+      var myWordCloudMaker = new WordCloudMaker();
+
+      var output1 = myWordCloudMaker.buildWordCloud( sourceArray[0] );
+      var output2 = myWordCloudMaker.buildWordCloud( sourceArray[1] );
+
+      document.getElementById('out1').innerHTML = output1;
+      document.getElementById('out2').innerHTML = output2;
+
+
+      console.log('output:  ' + output1 + '<br><br>' + output2);
+
+    </script>
+
+    <script>mocha.setup('bdd')</script>
+    <script src="test/test.js"></script>
+    <script>
+      mocha.run();
+    </script>
+
+  </body>
+</html>
